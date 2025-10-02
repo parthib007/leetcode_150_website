@@ -108,21 +108,33 @@ const leetCodeQuestions = [
   },
   {
     id: 18,
-    title: 'Remove Element',
-    link: 'https://leetcode.com/problems/remove-element/description/',
-    solution: 'https://github.com/parthib007/leetcode_150/blob/main/remove_element.cpp',
+    title: 'Length of Last Word',
+    link: 'https://leetcode.com/problems/length-of-last-word/description/',
+    solution: 'https://github.com/parthib007/leetcode_150/blob/main/length_of_last_word.cpp',
   },
   {
     id: 19,
-    title: 'Remove Element',
-    link: 'https://leetcode.com/problems/remove-element/description/',
-    solution: 'https://github.com/parthib007/leetcode_150/blob/main/remove_element.cpp',
+    title: 'Longest Common Prefix',
+    link: 'https://leetcode.com/problems/longest-common-prefix/description/',
+    solution: 'https://github.com/parthib007/leetcode_150/blob/main/longest_common_prefix.cpp',
   },
   {
     id: 20,
-    title: 'Remove Element',
-    link: 'https://leetcode.com/problems/remove-element/description/',
-    solution: 'https://github.com/parthib007/leetcode_150/blob/main/remove_element.cpp',
+    title: 'Reverse Words in a String',
+    link: 'https://leetcode.com/problems/reverse-words-in-a-string/description/',
+    solution: 'https://github.com/parthib007/leetcode_150/blob/main/reverse_words_string.cpp',
+  },
+  {
+    id: 21,
+    title: 'Zigzag Conversion',
+    link: 'https://leetcode.com/problems/zigzag-conversion/description/',
+    solution: 'https://github.com/parthib007/leetcode_150/blob/main/zigzag_conversion.cpp',
+  },
+  {
+    id: 22,
+    title: 'Find the Index of the First Occurrence in a String',
+    link: 'https://leetcode.com/problems/find-the-index-of-the-first-occurrence-in-a-string/description/',
+    solution: 'https://github.com/parthib007/leetcode_150/blob/main/first_occurrence_in_string.cpp',
   },
   
 ];
