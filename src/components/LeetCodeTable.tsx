@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 
+
 const leetCodeQuestions = [
   {
     id: 1,
@@ -139,59 +140,83 @@ const leetCodeQuestions = [
 ];
 
 export default function LeetCodeTable() {
-  const [progress, setProgress] = useState<Record<number, boolean>>({});
+  const [progress, setProgress] = useState<Record<string, boolean>>({});
+  const [loaded, setLoaded] = useState(false);
 
-  // Load saved progress from localStorage on mount
+  // Load progress from localStorage on mount (client only)
   useEffect(() => {
     const saved = localStorage.getItem('leetcodeProgress');
     if (saved) {
-      setProgress(JSON.parse(saved));
+      try {
+        setProgress(JSON.parse(saved));
+      } catch (e) {
+        console.error('Failed to parse leetcodeProgress from localStorage:', e);
+      }
     }
+    setLoaded(true);
   }, []);
 
-  // Save progress whenever it changes
+  // Save to localStorage only after loaded
   useEffect(() => {
-    localStorage.setItem('leetcodeProgress', JSON.stringify(progress));
-  }, [progress]);
+    if (!loaded) return;
+    // Only store true values
+    const filtered: Record<string, boolean> = {};
+    Object.keys(progress).forEach(key => {
+      if (progress[key]) filtered[key] = true;
+    });
+    console.log('Saving progress to localStorage:', filtered);
+    localStorage.setItem('leetcodeProgress', JSON.stringify(filtered));
+  }, [progress, loaded]);
 
   const toggleProgress = (id: number) => {
-    setProgress(prev => ({ ...prev, [id]: !prev[id] }));
+    setProgress(prev => {
+      const key = String(id);
+      const updated = { ...prev };
+      if (updated[key]) {
+        delete updated[key];
+      } else {
+        updated[key] = true;
+      }
+      console.log('Toggled progress:', updated);
+      return updated;
+    });
   };
 
+  if (!loaded) return null;
   return (
     <div className="overflow-x-auto rounded-lg border border-gray-700">
       <table className="min-w-full divide-y-2 divide-gray-700 bg-gray-800 text-sm">
         <thead className="text-left">
           <tr>
-            <th className="whitespace-nowrap px-4 py-3 font-medium text-white">Sl.no</th>
-            <th className="whitespace-nowrap px-4 py-3 font-medium text-white">LeetCode Question</th>
-            <th className="whitespace-nowrap px-4 py-3 font-medium text-white">LeetCode Link</th>
-            <th className="whitespace-nowrap px-4 py-3 font-medium text-white">My Solution</th>
-            <th className="whitespace-nowrap px-4 py-3 font-medium text-white">Your Progress</th>
+            <th className="whitespace-nowrap px-2 py-3 text-xs font-medium text-white sm:px-4 sm:text-sm">Sl.no</th>
+            <th className="whitespace-nowrap px-2 py-3 text-xs font-medium text-white sm:px-4 sm:text-sm">LeetCode Question</th>
+            <th className="whitespace-nowrap px-2 py-3 text-xs font-medium text-white sm:px-4 sm:text-sm">LeetCode Link</th>
+            <th className="whitespace-nowrap px-2 py-3 text-xs font-medium text-white sm:px-4 sm:text-sm">My Solution</th>
+            <th className="whitespace-nowrap px-2 py-3 text-xs font-medium text-white sm:px-4 sm:text-sm">Your Progress</th>
           </tr>
         </thead>
 
         <tbody className="divide-y divide-gray-700">
           {leetCodeQuestions.map((question, index) => (
             <tr key={question.id}>
-              <td className="whitespace-nowrap px-4 py-3 font-medium text-gray-300">{index + 1}</td>
-              <td className="whitespace-nowrap px-4 py-3 text-gray-300">{question.title}</td>
-              <td className="whitespace-nowrap px-4 py-3">
+              <td className="whitespace-nowrap px-2 py-3 text-xs font-medium text-gray-300 sm:px-4 sm:text-sm">{index + 1}</td>
+              <td className="whitespace-nowrap px-2 py-3 text-xs text-gray-300 sm:px-4 sm:text-sm">{question.title}</td>
+              <td className="whitespace-nowrap px-2 py-3 text-xs sm:px-4 sm:text-sm">
                 <a href={question.link} target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:underline">
                   View Question
                 </a>
               </td>
-              <td className="whitespace-nowrap px-4 py-3">
+              <td className="whitespace-nowrap px-2 py-3 text-xs sm:px-4 sm:text-sm">
                 <a href={question.solution} target="_blank" rel="noopener noreferrer" className="text-green-400 hover:underline">
                   View Solution
                 </a>
               </td>
-              <td className="whitespace-nowrap px-4 py-3">
+              <td className="whitespace-nowrap px-2 py-3 text-xs sm:px-4 sm:text-sm">
                 <input
                   type="checkbox"
-                  checked={progress[question.id] || false}
+                  checked={progress[String(question.id)] || false}
                   onChange={() => toggleProgress(question.id)}
-                  className="h-5 w-5 rounded border-gray-600 bg-gray-700 text-green-500 focus:ring-green-500"
+                  className="h-4 w-4 rounded border-gray-600 bg-gray-700 text-green-500 focus:ring-green-500 sm:h-5 sm:w-5"
                 />
               </td>
             </tr>
