@@ -1,8 +1,7 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
-// TODO: Replace this with your actual data
 const leetCodeQuestions = [
   {
     id: 1,
@@ -141,6 +140,19 @@ const leetCodeQuestions = [
 
 export default function LeetCodeTable() {
   const [progress, setProgress] = useState<Record<number, boolean>>({});
+
+  // Load saved progress from localStorage on mount
+  useEffect(() => {
+    const saved = localStorage.getItem('leetcodeProgress');
+    if (saved) {
+      setProgress(JSON.parse(saved));
+    }
+  }, []);
+
+  // Save progress whenever it changes
+  useEffect(() => {
+    localStorage.setItem('leetcodeProgress', JSON.stringify(progress));
+  }, [progress]);
 
   const toggleProgress = (id: number) => {
     setProgress(prev => ({ ...prev, [id]: !prev[id] }));
