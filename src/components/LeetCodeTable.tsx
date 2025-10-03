@@ -136,6 +136,66 @@ const leetCodeQuestions = [
     link: 'https://leetcode.com/problems/find-the-index-of-the-first-occurrence-in-a-string/description/',
     solution: 'https://github.com/parthib007/leetcode_150/blob/main/first_occurrence_in_string.cpp',
   },
+  {
+    id: 23,
+    title: 'Valid Palindrome',
+    link: 'https://leetcode.com/problems/valid-palindrome/description/',
+    solution: 'https://github.com/parthib007/leetcode_150/blob/main/valid_palindrome.cpp',
+  },
+  {
+    id: 24,
+    title: 'Is Subsequence',
+    link: 'https://leetcode.com/problems/is-subsequence/description/',
+    solution: 'https://github.com/parthib007/leetcode_150/blob/main/is_subsequence.cpp',
+  },
+  {
+    id: 25,
+    title: 'Two Sum II - Input Array Is Sorted',
+    link: 'https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/description/',
+    solution: 'https://github.com/parthib007/leetcode_150/blob/main/two_sumII.cpp',
+  },
+  {
+    id: 26,
+    title: 'Container With Most Water',
+    link: 'https://leetcode.com/problems/container-with-most-water/description/',
+    solution: 'https://github.com/parthib007/leetcode_150/blob/main/container_with_most_water.cpp',
+  },
+  {
+    id: 27,
+    title: '3Sum',
+    link: 'https://leetcode.com/problems/3sum/description/',
+    solution: 'https://github.com/parthib007/leetcode_150/blob/main/3sum.cpp',
+  },
+  {
+    id: 28,
+    title: 'Minimum Size Subarray Sum',
+    link: 'https://leetcode.com/problems/minimum-size-subarray-sum/description/',
+    solution: 'https://github.com/parthib007/leetcode_150/blob/main/minimum_size_subarray_sum.cpp',
+  },
+  {
+    id: 29,
+    title: 'Valid Sudoku',
+    link: 'https://leetcode.com/problems/valid-sudoku/description/',
+    solution: 'https://github.com/parthib007/leetcode_150/blob/main/valid_sudoku.cpp',
+  },
+  {
+    id: 30,
+    title: 'Spiral Matrix',
+    link: 'https://leetcode.com/problems/spiral-matrix/description/',
+    solution: 'https://github.com/parthib007/leetcode_150/blob/main/spiral_matrix.cpp',
+  },
+  {
+    id: 31,
+    title: 'Longest Substring Without Repeating Characters',
+    link: 'https://leetcode.com/problems/longest-substring-without-repeating-characters/description/',
+    solution: 'https://github.com/parthib007/leetcode_150/blob/main/longest_substring_without_rep.cpp',
+  },
+  {
+    id: 32,
+    title: 'Substring with Concatenation of All Words',
+    link: 'https://leetcode.com/problems/substring-with-concatenation-of-all-words/description/',
+    solution: 'https://github.com/parthib007/leetcode_150/blob/main/substring_concatenation_words.cpp',
+  },
   
 ];
 
